@@ -1,3 +1,4 @@
+<?php
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,3 +12,4 @@
     </div>
 </body>
 </html>
+ ?><?php /**PATH C:\laragon\www\wordpress\wp-content\plugins\Laravel-boilerplate\resources\views/layouts/app.blade.php ENDPATH**/ ?>
