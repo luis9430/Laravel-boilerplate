@@ -1,0 +1,19 @@
+
+{
+    "name": "tu-nombre/wp-laravel-boilerplate",
+    "description": "WordPress plugin boilerplate con componentes Laravel",
+    "type": "wordpress-plugin",
+    "require": {
+        "php": ">=7.4",
+        "illuminate/database": "^8.0",
+        "illuminate/view": "^8.0",
+        "illuminate/events": "^8.0",
+        "illuminate/container": "^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "WPLaravel\\": "src/"
+        }
+    }
+}
