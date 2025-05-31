@@ -14,6 +14,7 @@ use Illuminate\View\Compilers\BladeCompiler;
 use WPLaravel\Http\Router;
 use WPLaravel\PostTypes\PostTypeManager;
 use WPLaravel\Hooks\HookManager;
+use WPLaravel\Cli\WorkflowCommands; 
 
 class Plugin
 {
@@ -43,6 +44,8 @@ class Plugin
         $this->registerHooks();
         $this->registerPostTypes();
         $this->registerRoutes();
+        $this->registerCliCommands(); 
+
     }
     
     private function setupDatabase()
@@ -169,15 +172,19 @@ class Plugin
         $router->register();
     }
     
-    public static function activate()
+        public static function activate()
     {
-        // Crear tablas personalizadas
-        $migration = new \WPLaravel\Database\CreatePluginTables();
-        $migration->up();
-        
-        // Flush rewrite rules
+        // Crear tabla de ejemplos (existente)
+        $exampleMigration = new \WPLaravel\Database\CreatePluginTables();
+        $exampleMigration->up(); // Crea la tabla de ejemplos
+
+        // Crear tablas del sistema de workflow (NUEVO)
+        $workflowMigration = new \WPLaravel\Database\CreateWorkflowSystemTables();
+        $workflowMigration->up(); // Crea las tablas de workflow
+
         flush_rewrite_rules();
     }
+
     
     public static function deactivate()
     {
@@ -188,4 +195,15 @@ class Plugin
     {
         return $this->container;
     }
+
+private function registerCliCommands()
+    {
+        if (defined('WP_CLI') && WP_CLI) {
+            // Si WorkflowCommands::class se usa aquí sin un 'use' o '\' al inicio,
+            // PHP intentará resolverlo como WPLaravel\Core\WorkflowCommands
+            \WP_CLI::add_command('wplaravel workflow', WorkflowCommands::class);
+        }
+    }
+
+
 }

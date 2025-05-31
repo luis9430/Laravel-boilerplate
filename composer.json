@@ -1,4 +1,3 @@
-
 {
     "name": "tu-nombre/wp-laravel-boilerplate",
     "description": "WordPress plugin boilerplate con componentes Laravel",
@@ -9,7 +8,8 @@
         "illuminate/view": "^8.0",
         "illuminate/events": "^8.0",
         "illuminate/container": "^8.0",
-        "illuminate/support": "^8.0"
+        "illuminate/support": "^8.0",
+        "illuminate/pagination": "^8.0"
     },
     "autoload": {
         "psr-4": {
