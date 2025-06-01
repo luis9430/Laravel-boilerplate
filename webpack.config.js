@@ -10,9 +10,7 @@ module.exports = (env, argv) => {
   return {
     entry: {
       'admin': './assets/js/admin.js',
-      'frontend': './assets/js/frontend.js',
       'admin-styles': './assets/css/admin.scss',
-      'frontend-styles': './assets/css/frontend.scss',
     },
     
     output: {
@@ -24,12 +22,18 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.jsx?$/, 
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
+              presets: ['@babel/preset-env'],
+              plugins: [ // <--- AÑADIDO --->
+                ['@babel/plugin-transform-react-jsx', {
+                  runtime: 'automatic', // Habilita el nuevo JSX transform
+                  importSource: 'preact' // Le dice a Babel que use Preact para las importaciones de JSX
+                }]
+              ]
             }
           }
         },
@@ -63,6 +67,16 @@ module.exports = (env, argv) => {
           }
         }
       ]
+    },
+
+    resolve: { 
+     extensions: ['.js', '.jsx', '.json', '.wasm'], 
+      alias: {
+        'react': 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',     // Asegura que react-dom también use preact/compat
+        'react/jsx-runtime': 'preact/jsx-runtime' // Para el nuevo JSX transform automático
+      }
     },
     
     plugins: [

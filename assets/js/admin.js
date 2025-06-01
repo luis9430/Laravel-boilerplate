@@ -1,46 +1,19 @@
-(function($) {
-    'use strict';
+// assets/js/admin.js
+import { render } from 'preact';
+import AdminPageApp from './components/AdminPageApp';
+import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const rootElement = document.getElementById('pagina_preact_root');
+  if (rootElement) {
+    const initialPhpData = window.wpLaravelAdminData || {}; // Este es el objeto clave
     
-    $(document).ready(function() {
-        // Ejemplo de uso de REST API
-        $('.wp-laravel-load-examples').on('click', function(e) {
-            e.preventDefault();
-            
-            $.ajax({
-                url: wpLaravel.apiUrl + 'examples',
-                method: 'GET',
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader('X-WP-Nonce', wpLaravel.nonce);
-                },
-                success: function(response) {
-                    console.log('Examples loaded:', response);
-                },
-                error: function(error) {
-                    console.error('Error loading examples:', error);
-                }
-            });
-        });
-        
-        // Ejemplo de envío de formulario
-        $('#wp-laravel-example-form').on('submit', function(e) {
-            e.preventDefault();
-            
-            var formData = $(this).serialize();
-            
-            $.ajax({
-                url: wpLaravel.ajaxUrl,
-                method: 'POST',
-                data: formData + '&action=wp_laravel_example_store&nonce=' + wpLaravel.nonce,
-                success: function(response) {
-                    if (response.success) {
-                        alert('Example created successfully!');
-                    }
-                },
-                error: function(error) {
-                    console.error('Error creating example:', error);
-                }
-            });
-        });
-    });
-    
-})(jQuery);
+    render(
+      <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: 'light' }}>
+        <AdminPageApp config={initialPhpData} /> {/* Pasamos todo el objeto como 'config' */}
+      </MantineProvider>,
+      rootElement
+    );
+  }
+});

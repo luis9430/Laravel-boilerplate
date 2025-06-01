@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 // Definir constantes del plugin
 define('WP_LARAVEL_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('WP_LARAVEL_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('WP_LARAVEL_PLUGIN_VERSION', '1.0.0');
+define('WP_LARAVEL_PLUGIN_VERSION', '2.0.5');
 
 // Cargar Composer autoloader
 require_once WP_LARAVEL_PLUGIN_PATH . 'vendor/autoload.php';

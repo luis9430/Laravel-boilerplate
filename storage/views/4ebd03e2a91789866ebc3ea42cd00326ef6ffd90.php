@@ -1,32 +1,12 @@
 
-
+<?php $__env->startSection('title', __('Panel de Workflow', 'wp-laravel-boilerplate')); ?> 
 <?php $__env->startSection('content'); ?>
 <div class="wrap">
-    <h1><?php echo e(__('Examples', 'wp-laravel-boilerplate')); ?></h1>
+    <h1><?php echo e(__('Panel de Administración del Plugin', 'wp-laravel-boilerplate')); ?></h1>
     
-    <table class="wp-list-table widefat fixed striped">
-        <thead>
-            <tr>
-                <th><?php echo e(__('Title', 'wp-laravel-boilerplate')); ?></th>
-                <th><?php echo e(__('Status', 'wp-laravel-boilerplate')); ?></th>
-                <th><?php echo e(__('Created', 'wp-laravel-boilerplate')); ?></th>
-                <th><?php echo e(__('Actions', 'wp-laravel-boilerplate')); ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $__currentLoopData = $examples; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $example): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <tr>
-                <td><?php echo e($example->title); ?></td>
-                <td><?php echo e($example->status); ?></td>
-                <td><?php echo e($example->created_at->format('Y-m-d H:i')); ?></td>
-                <td>
-                    <a href="#" class="button"><?php echo e(__('Edit', 'wp-laravel-boilerplate')); ?></a>
-                    <a href="#" class="button"><?php echo e(__('Delete', 'wp-laravel-boilerplate')); ?></a>
-                </td>
-            </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </tbody>
-    </table>
+    <div id="pagina_preact_root">
+        <p>Cargando aplicación...</p>
+    </div>
 </div>
 <?php $__env->stopSection(); ?>
 
