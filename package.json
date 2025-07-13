@@ -36,7 +36,9 @@
   },
   "dependencies": {
     "@mantine/core": "^8.0.2",
+    "@mantine/form": "^8.0.2",
     "@mantine/hooks": "^8.0.2",
+    "@tabler/icons-preact": "^3.33.0",
     "axios": "^1.6.0",
     "preact": "^10.22.0",
     "react-jss": "^10.10.0"

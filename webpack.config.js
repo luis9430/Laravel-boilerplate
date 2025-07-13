@@ -11,6 +11,8 @@ module.exports = (env, argv) => {
     entry: {
       'admin': './assets/js/admin.js',
       'admin-styles': './assets/css/admin.scss',
+      'product-template-manager': './assets/js/product-template-manager.js', 
+
     },
     
     output: {
@@ -28,7 +30,7 @@ module.exports = (env, argv) => {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
-              plugins: [ // <--- AÑADIDO --->
+              plugins: [ 
                 ['@babel/plugin-transform-react-jsx', {
                   runtime: 'automatic', // Habilita el nuevo JSX transform
                   importSource: 'preact' // Le dice a Babel que use Preact para las importaciones de JSX
